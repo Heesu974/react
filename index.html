@@ -20,84 +20,34 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById("root");
-      const MinutesToHours = () => {
-        const [amount, setAmount] = React.useState(0);
-        //첫번째 element가 현재의 값
-        const [inverted, setInverted] = React.useState(false);
-        //minutes가 열려있으면 inverted 상태가 false이고,
-        //flip 버튼이 눌리면 onInvert의 setInverted 함수에 의해 inverted가 true가 되는데,
-        // inverted가 true면,
-        const onChange = (event) => {
-          setAmount(event.target.value);
-        };
-        const reset = () => setAmount(0);
-        const onInvert = () => {
-          reset();
-          setInverted((current) => !current);
-        };
+      function Btn(props) {
+        console.log(props);
         return (
-          <div>
-            <h3>Minutes to Hours</h3>
-            <div>
-              <label htmlFor="minutes">Minutes</label>
-              <input
-                value={inverted ? Math.round(amount * 60) : amount}
-                id="minutes"
-                placeholder="Minutes"
-                type="number"
-                onChange={onChange}
-                disabled={inverted === true}
-              />
-            </div>
+          <button
+            style={{
+              backgroundColor: "tomato",
+              color: "white",
+              padding: "10px 20px",
+              border: 0,
+              borderRadius: 10,
+            }}
+          >
+            {props.title}
+          </button>
+        );
+      }
 
-            <div>
-              <label htmlFor="hours">Hours</label>
-              <input
-                value={inverted ? amount : Math.round(amount / 60)}
-                id="hours"
-                placeholder="Hours"
-                type="number"
-                disabled={inverted === false}
-                onChange={onChange}
-              />
-            </div>
-            <button onClick={reset}>Reset</button>
-            <button onClick={onInvert}>
-              {inverted ? "turn back" : "turn"}
-            </button>
-          </div>
-        );
-      };
-      const KmToMiles = () => {
+      function App() {
         return (
           <div>
-            <h3>Killometers to miles</h3>
+            <Btn title="Save Chagnes" />
+            <Btn title="Confirm" />
           </div>
         );
-      };
-      const App = () => {
-        const [selectOption, setSelectOption] = React.useState("default");
-        const onSelect = (event) => {
-          setSelectOption(event.target.value);
-        };
-
-        return (
-          <div>
-            <h1>super converter</h1>
-            <select value={selectOption} onChange={onSelect}>
-              <option value="default">converter를 선택하세요.</option>
-              <option value="0">Minutes & Hours</option>
-              <option value="1">Killometers & Miles</option>
-            </select>
-            <hr />
-            {selectOption === "default" ? "please select your unit" : null}
-            {selectOption === "0" ? <MinutesToHours /> : null}
-            {selectOption === "1" ? <KmToMiles /> : null}
-          </div>
-        );
-      };
+      }
 
       ReactDOM.render(<App />, root);
+      //Props로 해결이 가능하게 될 문제
     </script>
   </body>
 </html>
