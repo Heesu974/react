@@ -24,6 +24,10 @@
 
       const countUp = () => {
         counter = counter + 1;
+        render();
+      };
+
+      const render = () => {
         ReactDOM.render(<Container />, root);
       };
       const Container = () => {
@@ -35,7 +39,7 @@
         );
       };
 
-      ReactDOM.render(<Container />, root);
+      render();
     </script>
   </body>
 </html>
