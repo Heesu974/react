@@ -20,8 +20,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById("root");
-      function Btn(props) {
-        console.log(props);
+      function Btn({ title, main }) {
         return (
           <button
             style={{
@@ -30,9 +29,10 @@
               padding: "10px 20px",
               border: 0,
               borderRadius: 10,
+              fontSize: main ? 30 : 10,
             }}
           >
-            {props.title}
+            {title}
           </button>
         );
       }
@@ -40,8 +40,8 @@
       function App() {
         return (
           <div>
-            <Btn title="Save Chagnes" />
-            <Btn title="Confirm" />
+            <Btn title="Save Chagnes" main={true} />
+            <Btn title="Confirm" main={false} />
           </div>
         );
       }
