@@ -18,39 +18,39 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
     <script type="text/babel">
       const root = document.getElementById("root");
-      function Btn({ title, changeValue }) {
-        console.log(title, "was rendered");
+      function Btn({ title, fontSize }) {
         return (
           <button
-            onClick={changeValue}
             style={{
               backgroundColor: "tomato",
               color: "white",
               padding: "10px 20px",
               border: 0,
               borderRadius: 10,
+              fontSize,
             }}
           >
             {title}
           </button>
         );
       }
-      const MemorizedBtn = React.memo(Btn);
+      Btn.propTypes = {
+        title: PropTypes.string,
+        fontSize: PropTypes.number.isRequired,
+      };
       function App() {
-        const [value, setValue] = React.useState("Save Changes");
-        const changeValue = () => setValue("Revert Changes");
         return (
           <div>
-            <MemorizedBtn title={value} changeValue={changeValue} />
-            <MemorizedBtn title="Confirm" />
+            <Btn title="test string" fontSize={35} />
+            <Btn title="test string" />
           </div>
         );
       }
 
       ReactDOM.render(<App />, root);
-      //Props로 해결이 가능하게 될 문제
     </script>
   </body>
 </html>
