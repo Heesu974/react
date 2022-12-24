@@ -23,7 +23,10 @@
       const App = () => {
         const [counter, setCounter] = React.useState(0);
         const onClick = () => {
-          setCounter(counter + 1);
+          // 1. 현재의 state로 새로운 State를 만드는 첫번째 방법
+          // setCounter(counter + 1);
+          //2. 현재의 current state로 새로운 state를 만드는 두번째 방법
+          setCounter((current) => current + 1);
         };
         return (
           <div>
@@ -34,8 +37,6 @@
       };
 
       ReactDOM.render(<App />, root);
-
-      //const로 다시 counter를 업데이트하는데 modicier을 가져 사용할 것이다. 그 값으로 업데이트하고 ㅇ리렌더링을 일으킬 것이다. 전저릴렌더링 해줬다. rerendering modifier 함수 안에서 coutner 에서 리렌더링을 일으켜줄 것이다. modifier 함 수내에서 일어날 거다 useState함수의 값을 ㅡㄱㄴㄷㅅ채ㅕㅜㅅㄷㄱ
     </script>
   </body>
 </html>
