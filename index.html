@@ -21,22 +21,19 @@
     <script type="text/babel">
       const root = document.getElementById("root");
       const App = () => {
-        const [counter, setCounter] = React.useState(0);
-        const onClick = () => {
-          // 1. 현재의 state로 새로운 State를 만드는 첫번째 방법
-          // setCounter(counter + 1);
-          //2. 현재의 current state로 새로운 state를 만드는 두번째 방법
-          setCounter((current) => current + 1);
-        };
         return (
           <div>
-            <h3>Total clicks : {counter}</h3>
-            <button onClick={onClick}>click me</button>
+            <h1>Super Converter</h1>
+            <label for="minutes">Minutes</label>
+            <input id="minutes" placeholder="Minutes" type="number" />
+            <label for="hours">Hours</label>
+            <input id="hours" placeholder="Hours" type="number" />
           </div>
         );
       };
 
       ReactDOM.render(<App />, root);
+      //unit conversion 분에서 시간으로 시간에서 분으로 킬로미터에서 일로
     </script>
   </body>
 </html>
