@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 
 function Hello() {
-  function byeFunc() {
-    console.log("component got destroyed");
-  }
-  function hifunc() {
+  useEffect(() => {
     console.log("component got called");
-    return byeFunc;
-  }
-
-  useEffect(hifunc, []);
+    return () => {
+      console.log("component got destroyed");
+    };
+  }, []);
 
   return <h1>Hello</h1>;
 }
