@@ -1,39 +1,32 @@
 import { useState, useEffect } from "react";
 
+function Hello() {
+  function byeFunc() {
+    console.log("component got destroyed");
+  }
+  function hifunc() {
+    console.log("component got called");
+    return byeFunc;
+  }
+
+  useEffect(hifunc, []);
+
+  return <h1>Hello</h1>;
+}
+
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setValue((prev) => prev + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-  useEffect(() => {
-    console.log("I run only once");
-  }, []);
-
-  useEffect(() => {
-    if (keyword !== "" && keyword.length > 5) {
-      console.log('I run when "keyword" changes');
-    }
-  }, [keyword]);
-  //keyword가 change할 때만 useEffect가 실행
-  useEffect(() => {
-    if (counter !== 0) {
-      console.log('I run when "counter" changes');
-    }
-  }, [counter]);
-
+  const [showing, setShowing] = useState(false);
+  const onClick = () => {
+    setShowing((prev) => !prev);
+  };
   return (
     <div>
       <h1>할 수 있다.</h1>
-      <input
-        value={keyword}
-        onChange={onChange}
-        type="text"
-        placeholder="search here..."
-      />
-      <h3>{counter}</h3>
-      <button onClick={onClick}>Click me</button>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }
 
+//clean up state를 만들어요 useState
 export default App;
