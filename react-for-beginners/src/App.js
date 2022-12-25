@@ -1,29 +1,42 @@
-import { useState, useEffect } from "react";
-
-function Hello() {
-  useEffect(() => {
-    console.log("component got called");
-    return () => {
-      console.log("component got destroyed");
-    };
-  }, []);
-
-  return <h1>Hello</h1>;
-}
+import { useState } from "react";
 
 function App() {
-  const [showing, setShowing] = useState(false);
-  const onClick = () => {
-    setShowing((prev) => !prev);
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([]);
+  const onChange = (event) => {
+    setTodo(event.target.value);
   };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (todo === "") {
+      return;
+    }
+    setTodos((currentArray) => [todo, ...currentArray]);
+    setTodo("");
+  };
+  console.log(todos);
+  //각각을 component로 만들어 봅시다.
+  console.log(todos.map((item, index) => <li key={index}>{item}</li>));
   return (
     <div>
-      <h1>할 수 있다.</h1>
-      {showing ? <Hello /> : null}
-      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
+      <form onSubmit={onSubmit}>
+        <legend>할 수 있다. - {todos.length}</legend>
+        <input
+          onChange={onChange}
+          value={todo}
+          type="text"
+          placeholder="해야 할 일 입력"
+        />
+        <button>추가</button>
+      </form>
+      <hr />
+      <ul>
+        {todos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-//clean up state를 만들어요 useState
 export default App;
