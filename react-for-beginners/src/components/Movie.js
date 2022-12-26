@@ -26,10 +26,7 @@ Movie.prototype = {
 }
 
 export default Movie;
-//movie component는 위의 property를 모두 부모 component로부터 받아옵니다. - props
 
-//movies/movie.id 가 붙은 페이지로 갈 수 ㅣㅇㅆ는 것을 목표로 한다.
+//aim1 home route에서 모든 영화를 보여주고,
+//aim2 movie route를 두고, 이 곳에서는 영화 하나만 보여줍니다.
 
-//react-router-dom을해서 react-router를 사용합니다.
-
-//이제는 스크린  단위로 작성해야 합니다.
