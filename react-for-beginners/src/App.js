@@ -20,8 +20,23 @@ function App () {
   console.log(movies)
   return (
     <div>
+      {loading ? <h1>Loading ... </h1> : <div>{
+        movies.map((movie) => (
+          <div key={movie.id}>
+            <h3>{movie.title}</h3>
+            <img src={movie.medium_cover_image}/>
+            <p>
+            {movie.summary}
+            </p>
+            <ul>
+              {movie.genres.map((genre,index) => (
+                <li key={index}>{genre}</li>
+              ))}
+            </ul>
 
-      {loading ? <h1>Loading ... </h1> : null}
+            </div>
+        ))
+        }</div>}
     </div>
   )
 }
@@ -34,3 +49,5 @@ export default App;
 //2. component가 시작할 때만 특정 코드를 실행하고 싶다.
 //then보다 더 보편적으로 사용하는게 있다. 이거 대신 async-await을 사용합니다.
 //async-await을 사용하기 위해 getMovies라는 함수를 만듭니다.
+//map을 사용해서 json 데이터를 화면에 뿌립니다.
+//state로부터 받은 data를 보여주는 것 뿐입니다.
