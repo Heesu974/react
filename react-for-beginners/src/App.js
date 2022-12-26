@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router, 
-  Switch,
+  Routes,
   Route
 } from 'react-router-dom';
 import Home from './routes/Home';
@@ -11,14 +11,15 @@ import Detail from './routes/Detail';
 function App () {
  return (
   <Router>
-    <Switch>
-      <Route path='/movie'>
-        <Detail />
-      </Route>
-      <Route path='/'>
-        <Home />
-      </Route>
-    </Switch>
+
+    <Routes>
+          <Route path="/movie" element={<Detail />} />
+            
+          <Route exact path="/" element={<Home/>} />
+            
+          
+        </Routes>
+  
   </Router>
  )
 }

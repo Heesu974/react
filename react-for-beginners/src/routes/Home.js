@@ -34,8 +34,7 @@ function Home() {
 
 export default Home;
 
-//Home route는 기본적으로 우리의 App component 전체를 가지고 있습니다.
-// route === screen === page
+//aim - 유저가 영화 제목을 클릭하면 Detail스크린으로 가게 하고 싶다.
 
-//Switch component가 있는 이유는 한 번에 하나의 Route만 렌더링하기 위함이다.
-// > React Router에서는 원한다면, 두 개의 Route를 한 번에 렌더링할 수 있다.
+//일반적인 html이었다면, a 태그를 만들어서 href를 지정했겠지만, 이렇게 만들면 화면 전체가 재실행된다.
+//Link를 사용하면 브라우저 새로고침 없이 유저를 다른 페이지로 이동시켜준다.
