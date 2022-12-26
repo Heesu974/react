@@ -1,5 +1,7 @@
+
+
 function Detail() {
-    return <h1>Detail</h1>
+    return 'detail'
 }
 export default Detail;
 
@@ -9,3 +11,7 @@ export default Detail;
 //router는 클라이언트에 Home Component를 보여준다.
 //url 요청이 localhost:3000/movies/{movie.id}가 된다면, 
 //router는 클라이언트에 Detail component를 보여줄 것이다.
+
+
+
+//aim - react-router-dom 사용법

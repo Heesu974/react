@@ -36,3 +36,6 @@ export default Home;
 
 //Home route는 기본적으로 우리의 App component 전체를 가지고 있습니다.
 // route === screen === page
+
+//Switch component가 있는 이유는 한 번에 하나의 Route만 렌더링하기 위함이다.
+// > React Router에서는 원한다면, 두 개의 Route를 한 번에 렌더링할 수 있다.
