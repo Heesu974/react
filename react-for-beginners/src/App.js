@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Movie from './Movie';
 
 // "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year"
 
@@ -21,21 +22,13 @@ function App () {
   return (
     <div>
       {loading ? <h1>Loading ... </h1> : <div>{
-        movies.map((movie) => (
-          <div key={movie.id}>
-            <h3>{movie.title}</h3>
-            <img src={movie.medium_cover_image}/>
-            <p>
-            {movie.summary}
-            </p>
-            <ul>
-              {movie.genres.map((genre,index) => (
-                <li key={index}>{genre}</li>
-              ))}
-            </ul>
-
-            </div>
-        ))
+        movies.map((movie) => <Movie 
+        key={movie.id}
+        mediumCoverImage={movie.medium_cover_image} 
+        title={movie.title} 
+        summary={movie.summary} 
+        genres={movie.genres}
+        />)
         }</div>}
     </div>
   )
@@ -51,3 +44,4 @@ export default App;
 //async-await을 사용하기 위해 getMovies라는 함수를 만듭니다.
 //map을 사용해서 json 데이터를 화면에 뿌립니다.
 //state로부터 받은 data를 보여주는 것 뿐입니다.
+//key는 react.js에서만, map 안에서 component를 render할 때 사용합니다.
