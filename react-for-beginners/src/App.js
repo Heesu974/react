@@ -13,7 +13,7 @@ function App () {
   <Router>
 
     <Routes>
-          <Route path="/movie" element={<Detail />} />
+          <Route path="/movie/:id" element={<Detail />} />
             
           <Route exact path="/" element={<Home/>} />
             
@@ -26,4 +26,6 @@ function App () {
 
 export default App;
 
-//누군가 우리 웹사이트의 '/' url에 있다면, Home compoent를 보여줄 겁니다.
+//react router는 다이나믹 url을 지원해줍니다. 
+//다이나믹하다는 것은 url에 변수를 넣을 수 있다는 의미입니다.
+//유저가 /movie/:id로 접근하면, 
