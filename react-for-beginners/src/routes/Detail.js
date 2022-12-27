@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import {json, useParams} from 'react-router-dom';
 
 function Detail() {
     const {id} = useParams();
+    const getMovie = async() => {
+        const response = await fetch(`https://yts.mx/api/v2/list_movies.json?movie_id=${id}`);
+        const json = await response.json();
+        console.log('id로 추출',json)
+      
+    }
     useEffect(() => {
-        
+       getMovie();
+     
     }, [])
     console.log(id)
 
@@ -12,18 +19,8 @@ function Detail() {
 }
 export default Detail;
 
-//Home route에서는 기본적으로 로딩하거나 영화 리스트 전체를 보여주는 스크린 전체를 만듦
-//router는 url을 보고있는 component고, 
-//사용자가 클라이언트에 localhost:3000/을 요청한다면,
-//router는 클라이언트에 Home Component를 보여준다.
-//url 요청이 localhost:3000/movies/{movie.id}가 된다면, 
-//router는 클라이언트에 Detail component를 보여줄 것이다.
+//package.json 의 script build를 실행하면 production ready code를 생성하게 된다.
+//production ready란 코드가 압축되고 모든게 최적화된다는 의미.
 
-
-
-//aim - react-router-dom 사용법
-
-// 현재 url이 
-//https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year 이건데,
-//여기서 어떠함 것에도 간섭받지 않는다고? - useEffect의 []를 통해서, 
-//8분에서
+//package.json  의 gh-pages -d build 가 하는 일은
+//gh-pages가 build 폴더 (directory)를 homepage라고 적어 놓은 github io 페이지에 업로드하도록 한느 것이다.

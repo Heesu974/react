@@ -15,7 +15,7 @@ function App () {
     <Routes>
           <Route path="/movie/:id" element={<Detail />} />
             
-          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/react" element={<Home/>} />
             
           
         </Routes>
@@ -26,6 +26,5 @@ function App () {
 
 export default App;
 
-//react router는 다이나믹 url을 지원해줍니다. 
-//다이나믹하다는 것은 url에 변수를 넣을 수 있다는 의미입니다.
-//유저가 /movie/:id로 접근하면, 
+
+//235가 영화 카드가 지원하는 최대 길이라고 했을 때,
